@@ -1,41 +1,42 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { AuthContext } from '../hooks/AuthContext';
-import api from '../api/api';
+import api from '../api/api'
+import { AuthContext } from '../hooks/AuthContext'
 
-const TransferTable = (isAdd) => {
+const AllTransferTable = () => {
     const column_transfer = [
         "Code",
         "Name",
-        "Transfer Date",
-        "ReceiveQty",
-        "IsssueQty",
-        "TransferBy",
-        "Edit",
-        "Delete"
+        "TransferDate",
+        "receiveQty",
+        "issueQty",
+        "transferBy",
     ];
     const [trasferList, setTransferList] = useState([]);
     const { authState } = useContext(AuthContext);
     useEffect(() => {
         const response = async () => {
-            const data = await api.get("accessory/get_transfer_user", { headers: { Authorization: `Bearer ${authState.token}` } })
+            const data = await api.get("accessory/get_transfer", { headers: { Authorization: `Bearer ${authState.token}` }})
             setTransferList(data.data.data)
+            
         }
         response();
-    }, [isAdd])
+    }, [])
     return (
         <div>
-            <table className="w-full min-w-max table-auto text-left">
-                <thead>
-                    <tr>
-                        {column_transfer.map((column) => (
-                            <th key={column}
-                                className=" sticky top-0 z-10 font-medium border-2 rounded-lg bg-blue-200 p-4 border-blue-300 ">
-                                {column}
-                            </th>
-                        ))}
-                    </tr>
-                </thead>
-                <tbody>
+            <div>
+                <table className="w-full min-w-max table-auto text-left">
+                    <thead>
+                        <tr>
+                            {column_transfer.map((column) => (
+                                <th key={column}
+                                 className=" sticky top-0 z-10 font-medium border-2 rounded-lg bg-blue-200 p-4 border-blue-300 ">
+                                    {column}
+                                </th>
+                            ))}
+
+                        </tr>
+                    </thead>
+                    <tbody>
                         {trasferList.map(
                             ({id, accessoryCode, accessoryName, accessoryTransferDate,receiveQty, issueQty, transferBy }, index) => {
                                 const isLast = index === trasferList.length;
@@ -48,17 +49,15 @@ const TransferTable = (isAdd) => {
                                         <td className={classes} >{receiveQty}</td>
                                         <td className={classes} >{issueQty}</td>
                                         <td className={classes} >{transferBy}</td>
-                                        <td className={classes} >Edit</td>
-                                        <td className={classes} >Delete</td>
                                     </tr>
                                 )
                             }
                             )}
                     </tbody>
-            </table>
-
+                </table>
+            </div>
         </div>
     )
 }
 
-export default TransferTable
+export default AllTransferTable

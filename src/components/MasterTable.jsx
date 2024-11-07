@@ -4,7 +4,7 @@ import { AuthContext } from '../hooks/AuthContext';
 import EditMaster from './master/EditMaster';
 import DeleteMaster from './master/DeleteMaster';
 
-const MasterTable = () => {
+const MasterTable = ({isAdd}) => {
     const [isEditMaster, setIsEditMaster] = useState(false)
     const [isDeleteMaster, setIsDeleteMaster] = useState(false)
     const [masterList, setMasterList] = useState([]);
@@ -19,7 +19,7 @@ const MasterTable = () => {
             }
         }
         fetchMaster()
-    }, [isEditMaster, isDeleteMaster]);
+    }, [isEditMaster, isDeleteMaster, isAdd]);
     // call edit  form
     const [id, setId] = useState()
     const OpenEditMaster = (id) => {

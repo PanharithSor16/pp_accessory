@@ -15,9 +15,16 @@ const Navbar = () => {
             {!isOpen && (
                 <button
                     onClick={toggleOffCanvas}
-                    className="top-4 left-4 z-30 p-2 bg-blue-500 text-white rounded-md focus:outline-none" 
+                    // className="top-4 left-4 z-30 p-2 bg-blue-500 text-white rounded-md focus:outline-none"
                 >
-                    Open Sidebar
+                    <div className="relative flex overflow-hidden items-center justify-center rounded-2xl w-[40px] h-[40px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
+                        <div className="flex flex-col justify-between w-[16px] h-[16px] transform transition-all duration-300 origin-center overflow-hidden group-focus:translate-x-1.5">
+                            <div className="bg-white h-[2px] w-6 transform transition-all duration-300 origin-left group-focus:rotate-[42deg] group-focus:w-2/3 delay-150"></div>
+                            <div className="bg-white h-[2px] w-6 rounded transform transition-all duration-300 group-focus:translate-x-10"></div>
+                            <div className="bg-white h-[2px] w-6 transform transition-all duration-300 origin-left group-focus:-rotate-[42deg] group-focus:w-2/3 delay-150"></div>
+                        </div>
+                    </div>
+
                 </button>
             )}
             {/* Sidebar Panel */}
@@ -30,8 +37,7 @@ const Navbar = () => {
                 >
                     &times;
                 </button>
-                
-                <nav className=" p-6 space-y-4 ">
+                <nav className=" mt-10 p-6 space-y-4 ">
                     <ul>
                         {navbar_data.map((nav) => (
                             <li key={nav.to} className="rounded-md p-1 text-start font-medium">
@@ -42,7 +48,7 @@ const Navbar = () => {
                         ))}
                     </ul>
                 </nav>
-            </div>   
+            </div>
         </>
     );
 };

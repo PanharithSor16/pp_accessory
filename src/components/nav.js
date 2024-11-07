@@ -2,6 +2,11 @@ export const navbar_data = [
     {
         to: '/',
         image: null,
+        title: "All Transfer"
+    },
+    {
+        to: '/transfer',
+        image: null,
         title: "Transfer"
     },
     {

@@ -14,14 +14,13 @@ const MasterPage = () => {
   
   return (
     <div>
-      <div>
-        master
+      <div className='m-3 flex place-content-between'>
         <Navbar />
-        <button onClick={openAddMaster}>
+        <button onClick={openAddMaster} className=' bg-slate-300 px-2 rounded-md'>
           Add Master
         </button>
       </div>
-      <MasterTable />
+      <MasterTable isAdd={isAddMaster}/>
       <AddMaster
         isOpen={isAddMaster}
         onClose={closeAddMaster}
