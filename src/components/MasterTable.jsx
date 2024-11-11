@@ -10,7 +10,7 @@ const MasterTable = ({isAdd}) => {
     const [masterList, setMasterList] = useState([]);
     const { authState } = useContext(AuthContext);
     useEffect(() => {
-        const fetchMaster = async () => {
+        const fetchMaster = async() => {
             try {
                 const response = await api.get('/accessory/get_accessory', { headers: { Authorization: `Bearer ${authState.token}` } })
                 setMasterList(response.data.data)

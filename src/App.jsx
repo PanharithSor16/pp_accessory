@@ -8,6 +8,7 @@ import BalancePage from './pages/BalancePage'
 import UserPage from './pages/UserPage'
 import MasterPage from './pages/MasterPage'
 import TransferPage from './pages/TransferPage'
+import NextPlanPage from './pages/NextPlanPage'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
               <Route path='/' element={<AllTransferPage />} />
               <Route path='/transfer' element={<TransferPage/>}/>
               <Route path='/balance' element={<BalancePage />} />
+              <Route path='/next' element={<NextPlanPage/>}/>
               <Route path='/user' element={<UserPage />} />
               <Route path='/master' element={<MasterPage />} />
             </Route>

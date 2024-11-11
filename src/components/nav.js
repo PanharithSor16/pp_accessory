@@ -10,6 +10,11 @@ export const navbar_data = [
         title: "Transfer"
     },
     {
+        to: '/next',
+        image: null,
+        title: "NextPlan"
+    },
+    {
         to: '/balance',
         image: null,
         title: "Balance"

@@ -1,8 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../hooks/AuthContext';
 import api from '../api/api';
+import EditMaster from './master/EditMaster';
+import EditTransfer from './transfer/EditTransfer';
+import DeleteTransfer from './transfer/DeleteTransfer';
 
-const TransferTable = (isAdd) => {
+const TransferTable = ({isAdd}) => {
     const column_transfer = [
         "Code",
         "Name",
@@ -13,6 +16,26 @@ const TransferTable = (isAdd) => {
         "Edit",
         "Delete"
     ];
+
+    // call edit form transfer
+    const [isEditTransfer, setIsEditTransfer] = useState(false)
+    const [id ,setId] = useState()
+    const OpenEditTransfer = (id) => {
+        setIsEditTransfer(true)
+        setId(id)
+    }
+    const CloseEditTransfer = () => {
+        setIsEditTransfer(false)
+    }
+    // call delete form Transfer
+    const [isDeleteTransfer, setIsDeleteTransfer] = useState(false);
+    const OpenDeleteTransfer = (id) => {
+        setIsDeleteTransfer(true)
+        setId(id)
+    } 
+    const CloseDeleteTransfer = ()=> {
+        setIsDeleteTransfer(false)
+    }
     const [trasferList, setTransferList] = useState([]);
     const { authState } = useContext(AuthContext);
     useEffect(() => {
@@ -21,7 +44,7 @@ const TransferTable = (isAdd) => {
             setTransferList(data.data.data)
         }
         response();
-    }, [isAdd])
+    }, [isAdd, isEditTransfer, isDeleteTransfer])
     return (
         <div>
             <table className="w-full min-w-max table-auto text-left">
@@ -37,7 +60,7 @@ const TransferTable = (isAdd) => {
                 </thead>
                 <tbody>
                         {trasferList.map(
-                            ({id, accessoryCode, accessoryName, accessoryTransferDate,receiveQty, issueQty, transferBy }, index) => {
+                            ({sysNo, accessoryCode, accessoryName, accessoryTransferDate,receiveQty, issueQty, transferBy }, index) => {
                                 const isLast = index === trasferList.length;
                                 const classes = isLast ? "p-4" : "p-4 border-2 border-blue-200";
                                 return (
@@ -48,15 +71,16 @@ const TransferTable = (isAdd) => {
                                         <td className={classes} >{receiveQty}</td>
                                         <td className={classes} >{issueQty}</td>
                                         <td className={classes} >{transferBy}</td>
-                                        <td className={classes} >Edit</td>
-                                        <td className={classes} >Delete</td>
+                                        <td className={classes} onClick={(e) => OpenEditTransfer(sysNo)}>Edit</td>
+                                        <td className={classes} onClick={(e) => OpenDeleteTransfer(sysNo)}>Delete</td>
                                     </tr>
                                 )
                             }
                             )}
                     </tbody>
             </table>
-
+            <EditTransfer isOpen={isEditTransfer} onClose={CloseEditTransfer} id={id} />
+            <DeleteTransfer isOpen={isDeleteTransfer}  onClose={CloseDeleteTransfer} id={id} />
         </div>
     )
 }
