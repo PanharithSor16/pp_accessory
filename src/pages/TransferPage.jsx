@@ -17,15 +17,15 @@ const TransferPage = () => {
   return (
     <div>
       <div className='m-3 flex place-content-between'>
-        <div className='flex w-1/3 place-content-between items-center '>
+        <div className='flex w-1/2 place-content-between items-center '>
           <Navbar />
-          <div className='flex items-center'>
-            <label htmlFor="">search</label>
-            <input type="text" className='ml-2 border-2 border-red-200 p-2 rounded-lg w-full'/>
+          <div className='flex items-center w-2/3'>
+            <label htmlFor="search">Search</label>
+            <input type="text" id='search' className='ml-2 border-2 border-blue-200 hover:shadow-lg p-2 rounded-lg w-full'/>
           </div>
         </div>
-        <button onClick={openAddTransfer} className=' bg-slate-300 px-2 rounded-md'>
-          add
+        <button onClick={openAddTransfer} className='bg-blue-400 text-red-50 px-3 font-bold rounded-md shadow-lg'>
+          Add
         </button>
       </div>
       <TransferTable isAdd={isAddTransfer}/>

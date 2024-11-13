@@ -44,31 +44,31 @@ const DeleteNextPlan = ({ isOpen, onClose, id }) => {
     <div>
        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
             <div className="bg-white rounded-lg shadow-lg p-6 w-96">
-                <h2 className="text-lg font-semibold mb-4">Update Accessory</h2>
+                <h2 className="text-xl text-red-400 font-semibold mb-4">Delete Accessory next Plan</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4 text-center text-2xl">
-                        <h2>{accessoryCode} , {accessoryName}</h2>
+                        <h2>{accessoryCode}  {accessoryName}</h2>
                     </div>
                     <div className="mb-4 ">
-                        <label className="block text-sm font-medium mb-2" htmlFor='name'>Date Next Plan</label>
+                        <label className="block text-lg font-medium mb-2 text-red-400" htmlFor='name'>Next Plan</label>
                         <input
                             id='name'
                             type="date"
                             disabled
                             autoComplete='off'
                             value={dateNextPlan}
-                            className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300"
+                            className="border border-gray-300 rounded-lg w-full p-2 "
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2" htmlFor='qty'>Accessory Qty</label>
+                        <label className="block text-lg font-medium mb-2 text-red-400" htmlFor='qty'>Accessory Qty</label>
                         <input
                             id='qty'
                             type="number"
                             disabled
                             autoComplete='off'
                             value={accessoryQty}
-                            className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300"
+                            className="border border-gray-300 rounded-lg w-full p-2 "
                         />
                     </div>
                     <div className="flex justify-end">

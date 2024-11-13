@@ -16,8 +16,8 @@ const NextPlanPage = () => {
     <div>
       <div className='m-3 flex place-content-between'>
         <Navbar />
-        <button onClick={openAddNext} className=' bg-slate-300 px-2 rounded-md'>
-          add
+        <button onClick={openAddNext} className='text-white bg-blue-400 hover:bg-blue-500 px-3 rounded-md shadow-lg font-semibold'>
+          Add
         </button>
       </div>
       <NextPlanTabel isAdd={isAddNext}/>

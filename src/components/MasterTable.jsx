@@ -25,7 +25,6 @@ const MasterTable = ({isAdd}) => {
     const OpenEditMaster = (id) => {
         setIsEditMaster(true)
         setId(id)
-
     }
     const CloseEditMaster =  () => {
         setIsEditMaster(false)
@@ -55,7 +54,6 @@ const MasterTable = ({isAdd}) => {
                                 {column}
                             </th>
                         ))}
-
                     </tr>
                 </thead>
                 <tbody>

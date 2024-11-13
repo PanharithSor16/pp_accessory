@@ -53,10 +53,12 @@ const AddTransfer = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
       <div className="bg-white rounded-lg shadow-lg p-6 w-96">
-        <h2 className="text-lg font-semibold mb-4">Receive or Issue Transfer </h2>
-        <div className='mb-4'>
-          <label className="block text-sm font-medium mb-2" htmlFor="search"> Search</label>
-          <input type="text" id='search' className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300" value={search} onChange={(e) => handleSearch(e.target.value)} />
+        <h2 className=" font-semibold mb-4 text-blue-400 text-xl">Receive or Issue Transfer </h2>
+        <div className='mb-4 '>
+          <label className="block text-lg font-medium text-blue-400 mb-2" htmlFor="search"> Search</label>
+          <input type="text" id='search'
+            className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300"
+            value={search} onChange={(e) => handleSearch(e.target.value)} />
         </div>
         <div className=" absolute bg-blue-400 my-2 rounded-lg shadow-lg text-xl">
           {resutlSearch.map((item) => (
@@ -73,24 +75,26 @@ const AddTransfer = ({ isOpen, onClose }) => {
         <form onSubmit={handleSubmit}>
           <div className="mb-4 flex place-content-center text-2xl">
             <div>
-              {accessoryCode}, {accessoryName}
+              {accessoryCode} {accessoryName}
             </div>
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2" htmlFor='name'>Receive Qty</label>
+            <label className="block text-lg font-medium mb-2 text-blue-400" htmlFor='name'>Receive Qty</label>
             <input
               id='name'
               type="number"
+              min={0}
               defaultValue={0}
               onChange={e => setReceiveQty(e.target.value)}
               className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2" htmlFor='name'>Issue Qty</label>
+            <label className="block text-lg font-medium mb-2 text-blue-400" htmlFor='name'>Issue Qty</label>
             <input
               id='name'
               type="number"
+              min={0}
               defaultValue={0}
               onChange={e => setIssueQty(e.target.value)}
               className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300"

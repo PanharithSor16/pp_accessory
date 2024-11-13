@@ -41,50 +41,50 @@ const EditTransfer = ({ isOpen, onClose, id }) => {
     return (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
             <div className="bg-white rounded-lg shadow-lg p-6 w-96">
-                <h2 className="text-lg font-semibold mb-4">Update Accessory</h2>
+                <h2 className="text-xl text-green-400 font-semibold mb-4">Update Accessory</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2" htmlFor='code'>Accessory Code</label>
+                        <label className="block text-lg font-medium mb-2 text-green-400" htmlFor='code'>Accessory Code</label>
                         <input
                             id='code'
                             type="text"
                             disabled
                             autoComplete='off'
                             value={editForm.accessoryCode}
-                            className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300"
+                            className="border border-gray-300 rounded-lg w-full p-2 "
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2" htmlFor='name'>Accessory Name</label>
+                        <label className="block text-lg font-medium mb-2 text-green-400" htmlFor='name'>Accessory Name</label>
                         <input
                             id='name'
                             type="text"
                             disabled
                             autoComplete='off'
                             value={editForm.accessoryName}
-                            className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300"
+                            className="border border-gray-300 rounded-lg w-full p-2 "
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2" htmlFor='receive'> Receive Qty</label>
+                        <label className="block text-lg font-medium mb-2 text-green-400" htmlFor='receive'> Receive Qty</label>
                         <input
                             id='receive'
                             type="number"
                             autoComplete='off'
                             onChange={(e) => setEditForm((prevData) => ({ ...prevData, receiveQty: e.target.value }))}
                             value={editForm.receiveQty}
-                            className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300"
+                            className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-green-300"
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2" htmlFor='issue'> issue Qty</label>
+                        <label className="block text-lg font-medium mb-2 text-green-400" htmlFor='issue'> issue Qty</label>
                         <input
                             id='issue'
                             type="number"
                             autoComplete='off'
                             onChange={(e) => setEditForm((prevData) => ({ ...prevData, issueQty: e.target.value }))}
                             value={editForm.issueQty}
-                            className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300"
+                            className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-green-300"
                         />
                     </div>
                     <div className="flex justify-end">
@@ -97,7 +97,7 @@ const EditTransfer = ({ isOpen, onClose, id }) => {
                         </button>
                         <button
                             type="submit"
-                            className="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600"
+                            className="bg-green-500 text-white rounded-md px-4 py-2 hover:bg-green-600"
                         >
                             Update
                         </button>

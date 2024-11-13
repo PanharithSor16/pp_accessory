@@ -71,8 +71,8 @@ const TransferTable = ({isAdd}) => {
                                         <td className={classes} >{receiveQty}</td>
                                         <td className={classes} >{issueQty}</td>
                                         <td className={classes} >{transferBy}</td>
-                                        <td className={classes} onClick={(e) => OpenEditTransfer(sysNo)}>Edit</td>
-                                        <td className={classes} onClick={(e) => OpenDeleteTransfer(sysNo)}>Delete</td>
+                                        <td className={`bg-green-300 font-semibold  ${classes}`} onClick={(e) => OpenEditTransfer(sysNo)}>Edit</td>
+                                        <td className={`bg-red-300 font-semibold ${classes}`} onClick={(e) => OpenDeleteTransfer(sysNo)}>Delete</td>
                                     </tr>
                                 )
                             }

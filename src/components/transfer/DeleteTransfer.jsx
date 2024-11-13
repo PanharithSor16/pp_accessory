@@ -45,10 +45,10 @@ const DeleteTransfer = ({isOpen, onClose, id}) => {
     return (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
             <div className="bg-white rounded-lg shadow-lg p-6 w-96">
-                <h2 className="text-lg font-semibold mb-4">Update Accessory</h2>
+                <h2 className="text-xl font-semibold mb-4 text-red-400">Update Accessory</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2" htmlFor='code'>Accessory Code</label>
+                        <label className="block text-lg font-medium mb-2 text-red-400" htmlFor='code'>Accessory Code</label>
                         <input
                             id='code'
                             type="text"
@@ -59,7 +59,7 @@ const DeleteTransfer = ({isOpen, onClose, id}) => {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2" htmlFor='name'>Accessory Name</label>
+                        <label className="block text-lg font-medium mb-2 text-red-400" htmlFor='name'>Accessory Name</label>
                         <input
                             id='name'
                             type="text"
@@ -70,7 +70,7 @@ const DeleteTransfer = ({isOpen, onClose, id}) => {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2" htmlFor='receive'> Receive Qty</label>
+                        <label className="block text-lg font-medium mb-2 text-red-400" htmlFor='receive'> Receive Qty</label>
                         <input
                             id='receive'
                             type="number"
@@ -81,7 +81,7 @@ const DeleteTransfer = ({isOpen, onClose, id}) => {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2" htmlFor='issue'>Issue Qty</label>
+                        <label className="block text-lg font-medium mb-2 text-red-400" htmlFor='issue'>Issue Qty</label>
                         <input
                             id='issue'
                             type="number"
@@ -101,7 +101,7 @@ const DeleteTransfer = ({isOpen, onClose, id}) => {
                         </button>
                         <button
                             type="submit"
-                            className="bg-red-500 text-white rounded-md px-4 py-2 hover:bg-blue-600"
+                            className="bg-red-500 text-white rounded-md px-4 py-2 hover:bg-red-600"
                         >
                             Delete
                         </button>

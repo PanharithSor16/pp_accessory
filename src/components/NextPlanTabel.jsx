@@ -74,8 +74,8 @@ const NextPlanTabel = ({isAdd}) => {
                                 <td className={classes} >{regDate}</td>
                                 <td className={classes} >{updateBy}</td>
                                 <td className={classes} >{updateDate}</td>
-                                <td className={` bg-green-300 ${classes}`} onClick={(e) => OpenEditNextPlan(sysNo) }> Edit</td>
-                                <td className={` bg-red-300 ${classes}`} onClick={(e) => OpenDeleteNextPlan(sysNo)}> Delete</td>
+                                <td className={` bg-green-300 font-semibold ${classes}`} onClick={(e) => OpenEditNextPlan(sysNo) }> Edit</td>
+                                <td className={` bg-red-300 font-semibold ${classes}`} onClick={(e) => OpenDeleteNextPlan(sysNo)}> Delete</td>
                             </tr>
                            )
                         }

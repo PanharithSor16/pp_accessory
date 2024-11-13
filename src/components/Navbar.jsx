@@ -17,7 +17,7 @@ const Navbar = () => {
                     onClick={toggleOffCanvas}
                     // className="top-4 left-4 z-30 p-2 bg-blue-500 text-white rounded-md focus:outline-none"
                 >
-                    <div className="relative flex overflow-hidden items-center justify-center rounded-2xl w-[40px] h-[40px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
+                    <div className="relative flex overflow-hidden items-center justify-center rounded-2xl w-[40px] h-[40px] transform transition-all bg-slate-600 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
                         <div className="flex flex-col justify-between w-[16px] h-[16px] transform transition-all duration-300 origin-center overflow-hidden group-focus:translate-x-1.5">
                             <div className="bg-white h-[2px] w-6 transform transition-all duration-300 origin-left group-focus:rotate-[42deg] group-focus:w-2/3 delay-150"></div>
                             <div className="bg-white h-[2px] w-6 rounded transform transition-all duration-300 group-focus:translate-x-10"></div>
@@ -29,19 +29,19 @@ const Navbar = () => {
             )}
             {/* Sidebar Panel */}
             <div
-                className={` fixed top-0 left-0 h-full w-96 bg-pink-50 text-black shadow-lg transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'} z-30`}
+                className={` fixed top-0 left-0 h-full w-96 bg-blue-50 text-black shadow-lg transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-full'} z-30`}
             >
                 <button
                     onClick={toggleOffCanvas}
-                    className="absolute top-4 right-4 p-2 px-3 bg-red-300 rounded-sm"
+                    className="absolute top-4 shadow-lg text-white right-4 p-1 px-3 bg-red-400 hover:text-blue-400 hover:bg-red-500 rounded-lg text-2xl"
                 >
                     &times;
                 </button>
-                <nav className=" mt-10 p-6 space-y-4 ">
+                <nav className=" mt-10 p-6 space-y-4 text-xl text-gray-700">
                     <ul>
                         {navbar_data.map((nav) => (
                             <li key={nav.to} className="rounded-md p-1 text-start font-medium">
-                                <NavLink to={nav.to} className="hover:bg-blue-300 p-2 rounded-md flex" >
+                                <NavLink to={nav.to} className="hover:bg-blue-300 p-2 rounded-md flex hover:shadow-lg" >
                                     {nav.title}
                                 </NavLink>
                             </li>

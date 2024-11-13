@@ -49,22 +49,23 @@ const AddNextPlan = ({ isOpen, onClose }) => {
       console.log(error)
     }
   }
+
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
       <div className="bg-white rounded-lg shadow-lg p-6 w-96">
-        <h2 className="text-lg font-semibold mb-4"> Next Plan </h2>
+        <h2 className="text-xl text-blue-400 font-semibold mb-4"> Next Plan </h2>
         <div className='mb-4'>
-          <label className="block text-sm font-medium mb-2" htmlFor="search"> Search</label>
+          <label className="block text-xl font-medium mb-2 text-blue-400" htmlFor="search"> Search</label>
           <input type="text" id='search' className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300" value={search} onChange={(e) => handleSearch(e.target.value)} />
         </div>
-        <div className=" absolute bg-blue-400 my-2 rounded-lg shadow-lg text-xl">
+        <div className=" absolute bg-blue-400 my-2 rounded-lg shadow-lg text-lg">
           {resutlSearch.map((item) => (
             <div key={item.sysNo}>
               <button
                 onClick={() => handleClickSearchResult(item.sysNo)}
                 className="px-3 my-2 hover:text-indigo-600 hover:font-bold w-auto text-left"
               >
-                {item.accessoryCode}, {item.accessoryName}
+                {item.accessoryCode} {item.accessoryName}
               </button>
             </div>
           ))}
@@ -72,24 +73,27 @@ const AddNextPlan = ({ isOpen, onClose }) => {
         <form onSubmit={handleSubmit}>
           <div className="mb-4 flex place-content-center text-2xl">
             <div>
-              {accessoryCode}, {accessoryName}
+              {accessoryCode} {accessoryName}
             </div>
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2" htmlFor='next'>Next Plan Date</label>
+            <label className="block text-xl font-medium mb-2 text-blue-400" htmlFor='next'>Next Plan Date</label>
             <input
               id='next'
               type="date"
+              required
               defaultValue={Date.now}
               onChange={e => setPlanDate(e.target.value)}
               className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2" htmlFor='qty'>Qty</label>
+            <label className="block text-lg text-blue-400  font-medium mb-2" htmlFor='qty'>Qty</label>
             <input
               id='qty'
               type="number"
+              required
+              min={0}
               defaultValue={0}
               onChange={e => setAccessoryQty(e.target.value)}
               className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300"
