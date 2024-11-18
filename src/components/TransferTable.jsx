@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../hooks/AuthContext';
 import api from '../api/api';
-import EditMaster from './master/EditMaster';
 import EditTransfer from './transfer/EditTransfer';
 import DeleteTransfer from './transfer/DeleteTransfer';
+import {receive_time} from './nav'
 
-const TransferTable = ({isAdd}) => {
+const TransferTable = ({isAdd, search, tableRef}) => {
     const column_transfer = [
         "Code",
         "Name",
@@ -16,7 +16,6 @@ const TransferTable = ({isAdd}) => {
         "Edit",
         "Delete"
     ];
-
     // call edit form transfer
     const [isEditTransfer, setIsEditTransfer] = useState(false)
     const [id ,setId] = useState()
@@ -40,14 +39,14 @@ const TransferTable = ({isAdd}) => {
     const { authState } = useContext(AuthContext);
     useEffect(() => {
         const response = async () => {
-            const data = await api.get("accessory/get_transfer_user", { headers: { Authorization: `Bearer ${authState.token}` } })
+            const data = await api.get("accessory/get_transfer_user", { params: {search: search} ,  headers: { Authorization: `Bearer ${authState.token}` }})
             setTransferList(data.data.data)
         }
         response();
-    }, [isAdd, isEditTransfer, isDeleteTransfer])
+    }, [isAdd, isEditTransfer, isDeleteTransfer, search])
     return (
         <div>
-            <table className="w-full min-w-max table-auto text-left">
+            <table className="w-full min-w-max table-auto text-left" ref={tableRef}>
                 <thead>
                     <tr>
                         {column_transfer.map((column) => (
@@ -67,16 +66,18 @@ const TransferTable = ({isAdd}) => {
                                     <tr key={index}>
                                         <td className={classes} >{accessoryCode}</td>
                                         <td className={classes} >{accessoryName}</td>
-                                        <td className={classes} >{accessoryTransferDate}</td>
+                                        <td className={classes} >{receive_time(accessoryTransferDate)}</td>
                                         <td className={classes} >{receiveQty}</td>
                                         <td className={classes} >{issueQty}</td>
                                         <td className={classes} >{transferBy}</td>
-                                        <td className={`bg-green-300 font-semibold  ${classes}`} onClick={(e) => OpenEditTransfer(sysNo)}>Edit</td>
-                                        <td className={`bg-red-300 font-semibold ${classes}`} onClick={(e) => OpenDeleteTransfer(sysNo)}>Delete</td>
+                                        <td className={`bg-green-300 font-semibold ${classes}`}
+                                         onClick={(e) => OpenEditTransfer(sysNo)}>Edit</td>
+                                        <td className={`bg-red-300 font-semibold ${classes}`}
+                                         onClick={(e) => OpenDeleteTransfer(sysNo)}>Delete</td>
                                     </tr>
-                                )
-                            }
-                            )}
+                                )}
+                            )
+                        }
                     </tbody>
             </table>
             <EditTransfer isOpen={isEditTransfer} onClose={CloseEditTransfer} id={id} />

@@ -55,8 +55,8 @@ const AddNextPlan = ({ isOpen, onClose }) => {
       <div className="bg-white rounded-lg shadow-lg p-6 w-96">
         <h2 className="text-xl text-blue-400 font-semibold mb-4"> Next Plan </h2>
         <div className='mb-4'>
-          <label className="block text-xl font-medium mb-2 text-blue-400" htmlFor="search"> Search</label>
-          <input type="text" id='search' className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300" value={search} onChange={(e) => handleSearch(e.target.value)} />
+          <label className="block text-xl font-medium mb-2 text-blue-400" htmlFor="searchItem"> Search</label>
+          <input type="text" id='searchItem' className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300" value={search} onChange={(e) => handleSearch(e.target.value)} />
         </div>
         <div className=" absolute bg-blue-400 my-2 rounded-lg shadow-lg text-lg">
           {resutlSearch.map((item) => (

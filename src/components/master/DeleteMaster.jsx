@@ -43,10 +43,10 @@ const DeleteMaster = ({ isOpen, onClose, id }) => {
     return (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
             <div className="bg-white rounded-lg shadow-lg p-6 w-96">
-                <h2 className="text-lg font-semibold mb-4">Update Accessory</h2>
+                <h2 className="text-xl text-red-400 font-semibold mb-4">Update Accessory</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2" htmlFor='code'>Accessory Code</label>
+                        <label className="block text-lg text-red-400 font-medium mb-2" htmlFor='code'>Accessory Code</label>
                         <input
                             id='code'
                             type="text"
@@ -57,7 +57,7 @@ const DeleteMaster = ({ isOpen, onClose, id }) => {
                         />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2" htmlFor='name'>Accessory Name</label>
+                        <label className="block text-lg text-red-400 font-medium mb-2" htmlFor='name'>Accessory Name</label>
                         <input
                             id='name'
                             type="text"
@@ -77,7 +77,7 @@ const DeleteMaster = ({ isOpen, onClose, id }) => {
                         </button>
                         <button
                             type="submit"
-                            className="bg-red-500 text-white rounded-md px-4 py-2 hover:bg-blue-600"
+                            className="bg-red-500 text-white rounded-md px-4 py-2 hover:bg-red-600"
                         >
                             Delete
                         </button>

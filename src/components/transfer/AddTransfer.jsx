@@ -55,8 +55,8 @@ const AddTransfer = ({ isOpen, onClose }) => {
       <div className="bg-white rounded-lg shadow-lg p-6 w-96">
         <h2 className=" font-semibold mb-4 text-blue-400 text-xl">Receive or Issue Transfer </h2>
         <div className='mb-4 '>
-          <label className="block text-lg font-medium text-blue-400 mb-2" htmlFor="search"> Search</label>
-          <input type="text" id='search'
+          <label className="block text-lg font-medium text-blue-400 mb-2" htmlFor="searchItem"> Search</label>
+          <input type="text" id='searchItem'
             className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300"
             value={search} onChange={(e) => handleSearch(e.target.value)} />
         </div>
@@ -79,9 +79,9 @@ const AddTransfer = ({ isOpen, onClose }) => {
             </div>
           </div>
           <div className="mb-4">
-            <label className="block text-lg font-medium mb-2 text-blue-400" htmlFor='name'>Receive Qty</label>
+            <label className="block text-lg font-medium mb-2 text-blue-400" htmlFor='receive'>Receive Qty</label>
             <input
-              id='name'
+              id='receive'
               type="number"
               min={0}
               defaultValue={0}
@@ -90,9 +90,9 @@ const AddTransfer = ({ isOpen, onClose }) => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-lg font-medium mb-2 text-blue-400" htmlFor='name'>Issue Qty</label>
+            <label className="block text-lg font-medium mb-2 text-blue-400" htmlFor='issue'>Issue Qty</label>
             <input
-              id='name'
+              id='issue'
               type="number"
               min={0}
               defaultValue={0}

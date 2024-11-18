@@ -4,29 +4,30 @@ import { AuthContext } from '../hooks/AuthContext';
 import EditMaster from './master/EditMaster';
 import DeleteMaster from './master/DeleteMaster';
 
-const MasterTable = ({isAdd}) => {
+const MasterTable = ({ isAdd, search }) => {
     const [isEditMaster, setIsEditMaster] = useState(false)
     const [isDeleteMaster, setIsDeleteMaster] = useState(false)
     const [masterList, setMasterList] = useState([]);
     const { authState } = useContext(AuthContext);
     useEffect(() => {
-        const fetchMaster = async() => {
+        const fetchMaster = async () => {
             try {
-                const response = await api.get('/accessory/get_accessory', { headers: { Authorization: `Bearer ${authState.token}` } })
+                const response = await api.get('/accessory/get_accessory',
+                    { params: { search: search }, headers: { Authorization: `Bearer ${authState.token}` } })
                 setMasterList(response.data.data)
             } catch (error) {
                 console.log(error)
             }
         }
         fetchMaster()
-    }, [isEditMaster, isDeleteMaster, isAdd]);
+    }, [isEditMaster, isDeleteMaster, isAdd, search]);
     // call edit  form
     const [id, setId] = useState()
     const OpenEditMaster = (id) => {
         setIsEditMaster(true)
         setId(id)
     }
-    const CloseEditMaster =  () => {
+    const CloseEditMaster = () => {
         setIsEditMaster(false)
     }
     // call delete form
@@ -65,8 +66,8 @@ const MasterTable = ({isAdd}) => {
                                 <tr key={index}>
                                     <td className={classes} >{accessoryCode}</td>
                                     <td className={classes} >{accessoryName}</td>
-                                    <td className={classes} onClick={(e) => OpenEditMaster(sysNo)} >Edit</td>
-                                    <td className={classes} onClick={(e) => OpenDeteleMaster(sysNo)} >Delete</td>
+                                    <td className={`bg-green-400 font-semibold ${classes}`} onClick={(e) => OpenEditMaster(sysNo)} >Edit</td>
+                                    <td className={`bg-red-400 font-semibold ${classes}`} onClick={(e) => OpenDeteleMaster(sysNo)} >Delete</td>
                                 </tr>
                             )
                         }
@@ -74,7 +75,7 @@ const MasterTable = ({isAdd}) => {
                 </tbody>
             </table>
             <EditMaster isOpen={isEditMaster} onClose={CloseEditMaster} id={id} />
-            <DeleteMaster isOpen={isDeleteMaster} onClose={CloseDeleteMaster} id={id}/>
+            <DeleteMaster isOpen={isDeleteMaster} onClose={CloseDeleteMaster} id={id} />
         </div>
     )
 }

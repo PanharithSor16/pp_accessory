@@ -40,8 +40,9 @@ const Navbar = () => {
                 <nav className=" mt-10 p-6 space-y-4 text-xl text-gray-700">
                     <ul>
                         {navbar_data.map((nav) => (
-                            <li key={nav.to} className="rounded-md p-1 text-start font-medium">
+                            <li key={nav.to} className="rounded-md p-1 text-start font-medium ">
                                 <NavLink to={nav.to} className="hover:bg-blue-300 p-2 rounded-md flex hover:shadow-lg" >
+                                    <img src={nav.image} alt="" width={35}  className=' mr-2'/>
                                     {nav.title}
                                 </NavLink>
                             </li>

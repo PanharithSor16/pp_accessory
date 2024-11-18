@@ -2,17 +2,18 @@ import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../hooks/AuthContext';
 import api from '../api/api';
 
-const BalanceTable = () => {
+const BalanceTable = ({search, tableRef}) => {
     const [balanceList, setBalanceList] = useState([]);
     const { authState } = useContext(AuthContext)
 
     useEffect(() => {
         const fetchBalance = async() => {
-            const response = await api.get('balance/get_balance', {headers: {Authorization: authState.token}})
+            const response = await api.get('balance/get_balance', 
+                { params: {search: search} ,  headers: { Authorization: `Bearer ${authState.token}` }})
             setBalanceList(response.data.data) 
         }
         fetchBalance()
-    }, [])
+    }, [search])
     const column_master = [
         "Code",
         "Name",
@@ -20,7 +21,7 @@ const BalanceTable = () => {
     ];
   return (
     <div>
-       <table className="w-full min-w-max table-auto text-left">
+       <table className="w-full min-w-max table-auto text-left" ref={tableRef}>
                 <thead>
                     <tr>
                         {column_master.map((column) => (

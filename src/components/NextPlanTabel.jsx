@@ -3,8 +3,8 @@ import { AuthContext } from '../hooks/AuthContext'
 import api from '../api/api';
 import EditNextPlan from './nextPlan/EditNextPlan';
 import DeleteNextPlan from './nextPlan/DeleteNextPlan';
-
-const NextPlanTabel = ({isAdd}) => {
+import {receive_time} from './nav'
+const NextPlanTabel = ({isAdd, search, tableRef}) => {
     const { authState } = useContext(AuthContext);
     const [nexPlanList, setNextPlanList] = useState([])
     const [isEditNextPlan, setIsEditNextPlan] = useState(false)
@@ -13,14 +13,14 @@ const NextPlanTabel = ({isAdd}) => {
         const fetchNextPlane = async () => {
             try {
                 const response = await api.get(`/next_plan/get_plan`,
-                    { headers: { Authorization: `Bearer ${authState.token}` } })
+                    { params: {search: search} ,  headers: { Authorization: `Bearer ${authState.token}` }})
                 setNextPlanList(response.data.data)
             } catch (error) {
                 console.error("Failed to fetch NextPlan data:", error);
             }
         }
         fetchNextPlane()
-    }, [isAdd, isEditNextPlan, isDeleteNextPlan]);
+    }, [isAdd, isEditNextPlan, isDeleteNextPlan, search]);
 
     // call edit form 
     const [id, setId] = useState()
@@ -31,8 +31,8 @@ const NextPlanTabel = ({isAdd}) => {
     const CloseEditNextPlan = () => {
         setIsEditNextPlan(false)
     }
+    
     // call delete Form
-   
     const OpenDeleteNextPlan = (id) => {
         setId(id)
         setIsDeleteNextPlan(true)
@@ -41,12 +41,10 @@ const NextPlanTabel = ({isAdd}) => {
         setIsDeleteNextPlan(false)
     }
 
-
-    const column_nextPlan = ["Code",
-        "Name", "Plan Date", "Qty", "RegBy", "RegDate", "UpdateBy", "UpdateDate", "Edit", "Delete"]
+    const column_nextPlan = ["Code", "Name", "Plan Date", "Qty", "RegBy", "RegDate", "UpdateBy", "UpdateDate", "Edit", "Delete"]
     return (
         <div>
-            <table className="w-full min-w-max table-auto text-left">
+            <table className="w-full min-w-max table-auto text-left" ref={tableRef}>
                 <thead>
                     <tr>
                         {column_nextPlan.map((column) => (
@@ -68,12 +66,12 @@ const NextPlanTabel = ({isAdd}) => {
                             <tr key={index}>
                                 <td className={classes} >{accessoryCode}</td>
                                 <td className={classes} >{accessoryName}</td>
-                                <td className={classes} >{accessoryQty}</td>
                                 <td className={classes} >{planDate}</td>
+                                <td className={classes} >{accessoryQty}</td>
                                 <td className={classes} >{regBy}</td>
-                                <td className={classes} >{regDate}</td>
+                                <td className={classes} >{receive_time(regDate)}</td>
                                 <td className={classes} >{updateBy}</td>
-                                <td className={classes} >{updateDate}</td>
+                                <td className={classes} >{receive_time(updateDate)}</td>
                                 <td className={` bg-green-300 font-semibold ${classes}`} onClick={(e) => OpenEditNextPlan(sysNo) }> Edit</td>
                                 <td className={` bg-red-300 font-semibold ${classes}`} onClick={(e) => OpenDeleteNextPlan(sysNo)}> Delete</td>
                             </tr>
