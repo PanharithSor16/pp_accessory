@@ -3,7 +3,7 @@ import api from '../api/api';
 import { AuthContext } from '../hooks/AuthContext';
 import {receive_time} from './nav'
 const AllTransferTable = ({ search, tableRef }) => {
-    const columns = ["Code", "Name", "TransferDate", "receiveQty", "issueQty", "transferBy"];
+    const columns = ["Code", "Name", "OrderDate", "ReceiveQty", "IssueQty", "TransferBy"];
     const [transferList, setTransferList] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -27,7 +27,6 @@ const AllTransferTable = ({ search, tableRef }) => {
         };
         fetchTransferData();
     }, [search, authState.token]);
-
     return (
         <div>
             {loading && <p>Loading...</p>}
@@ -48,7 +47,7 @@ const AllTransferTable = ({ search, tableRef }) => {
                 <tbody>
                     {transferList.map(
                         (
-                            { accessoryCode, accessoryName, accessoryTransferDate, receiveQty, issueQty, transferBy },
+                            { accessoryCode, accessoryName, accessoryTransferDate, orderDate, receiveQty, issueQty, transferBy },
                             index
                         ) => {
                             const isLast = index === transferList.length + 1;
@@ -57,7 +56,7 @@ const AllTransferTable = ({ search, tableRef }) => {
                                 <tr key={index}>
                                     <td className={classes}>{accessoryCode}</td>
                                     <td className={classes}>{accessoryName}</td>
-                                    <td className={classes}>{receive_time(accessoryTransferDate)}</td>
+                                    <td className={classes}>{orderDate}</td>
                                     <td className={classes}>{receiveQty}</td>
                                     <td className={classes}>{issueQty}</td>
                                     <td className={classes}>{transferBy}</td>

@@ -9,7 +9,7 @@ const TransferTable = ({isAdd, search, tableRef}) => {
     const column_transfer = [
         "Code",
         "Name",
-        "Transfer Date",
+        "Order Date",
         "ReceiveQty",
         "IsssueQty",
         "TransferBy",
@@ -59,14 +59,14 @@ const TransferTable = ({isAdd, search, tableRef}) => {
                 </thead>
                 <tbody>
                         {trasferList.map(
-                            ({sysNo, accessoryCode, accessoryName, accessoryTransferDate,receiveQty, issueQty, transferBy }, index) => {
+                            ({sysNo, accessoryCode,orderDate, accessoryName, accessoryTransferDate,receiveQty, issueQty, transferBy }, index) => {
                                 const isLast = index === trasferList.length;
                                 const classes = isLast ? "p-4" : "p-4 border-2 border-blue-200";
                                 return (
                                     <tr key={index}>
                                         <td className={classes} >{accessoryCode}</td>
                                         <td className={classes} >{accessoryName}</td>
-                                        <td className={classes} >{receive_time(accessoryTransferDate)}</td>
+                                        <td className={classes} >{orderDate}</td>
                                         <td className={classes} >{receiveQty}</td>
                                         <td className={classes} >{issueQty}</td>
                                         <td className={classes} >{transferBy}</td>

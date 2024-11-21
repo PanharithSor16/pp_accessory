@@ -9,6 +9,7 @@ const AddTransfer = ({ isOpen, onClose }) => {
   const [search, setSearch] = useState('')
   const [accessoryCode, setAccessoryCode] = useState('')
   const [accessoryName, setAccessoryName] = useState('')
+  const [orderDate, setOrderDate] = useState('')
   const [receiveQty, setReceiveQty] = useState(0)
   const [issueQty, setIssueQty] = useState(0)
   const handleSubmit = async (e) => {
@@ -17,7 +18,8 @@ const AddTransfer = ({ isOpen, onClose }) => {
       accessoryCode: accessoryCode,
       accessoryName: accessoryName,
       receiveQty: receiveQty,
-      issueQty: issueQty
+      issueQty: issueQty,
+      orderDate: orderDate
     }, { headers: { Authorization: `Bearer ${authState.token}` } })
     onClose()
   }
@@ -45,7 +47,6 @@ const AddTransfer = ({ isOpen, onClose }) => {
       setAccessoryName(response.data.data.accessoryName)
       setResultSearch([])
       setSearch('')
-      console.log("Helllo")
     } catch (error) {
       console.log(error)
     }
@@ -77,6 +78,17 @@ const AddTransfer = ({ isOpen, onClose }) => {
             <div>
               {accessoryCode} {accessoryName}
             </div>
+          </div>
+          <div className="mb-4">
+            <label className="block text-lg font-medium mb-2 text-blue-400" htmlFor='order'>Order Date</label>
+            <input
+              id='order'
+              type="date"
+              required
+              defaultValue={Date.now}
+              onChange={e => setOrderDate(e.target.value)}
+              className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring focus:ring-blue-300"
+            />
           </div>
           <div className="mb-4">
             <label className="block text-lg font-medium mb-2 text-blue-400" htmlFor='receive'>Receive Qty</label>

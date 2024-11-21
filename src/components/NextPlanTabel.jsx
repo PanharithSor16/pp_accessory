@@ -31,7 +31,6 @@ const NextPlanTabel = ({isAdd, search, tableRef}) => {
     const CloseEditNextPlan = () => {
         setIsEditNextPlan(false)
     }
-    
     // call delete Form
     const OpenDeleteNextPlan = (id) => {
         setId(id)
@@ -72,8 +71,8 @@ const NextPlanTabel = ({isAdd, search, tableRef}) => {
                                 <td className={classes} >{receive_time(regDate)}</td>
                                 <td className={classes} >{updateBy}</td>
                                 <td className={classes} >{receive_time(updateDate)}</td>
-                                <td className={` bg-green-300 font-semibold ${classes}`} onClick={(e) => OpenEditNextPlan(sysNo) }> Edit</td>
-                                <td className={` bg-red-300 font-semibold ${classes}`} onClick={(e) => OpenDeleteNextPlan(sysNo)}> Delete</td>
+                                <td className={`bg-green-300 font-semibold ${classes}`} onClick={(e) => OpenEditNextPlan(sysNo) }> Edit</td>
+                                <td className={`bg-red-300 font-semibold ${classes}`} onClick={(e) => OpenDeleteNextPlan(sysNo)}> Delete</td>
                             </tr>
                            )
                         }
@@ -82,7 +81,6 @@ const NextPlanTabel = ({isAdd, search, tableRef}) => {
             </table>
             <EditNextPlan isOpen={isEditNextPlan} id={id} onClose={CloseEditNextPlan} />
             <DeleteNextPlan isOpen={isDeleteNextPlan} id={id} onClose={CloseDeleteNextPlan}/>
-
         </div>
     )
 }
