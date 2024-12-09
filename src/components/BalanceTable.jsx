@@ -47,11 +47,11 @@ const BalanceTable = ({ search, tableRef }) => {
                                 <tr key={index}>
                                     <td className={classes} >{accessoryCode}</td>
                                     <td className={classes} >{accessoryName}</td>
-                                    <td className={classes} >{receiveQty - issueQty - nextMonthReceiveQty + nextMonthIssueQty - totalAccessoryQty + nextMonthTotalAccessoryQty}</td>
+                                    <td className={classes} >{receiveQty - issueQty }</td>
                                     <td className={classes} >{nextMonthTotalAccessoryQty}</td>
-                                    <td className={classes} >{receiveQty - issueQty - totalAccessoryQty + nextMonthIssueQty - nextMonthReceiveQty } </td>
-                                    <td className={classes} >{nextMonthReceiveQty - nextMonthIssueQty}</td>
-                                    <td className={classes} >{receiveQty - issueQty - totalAccessoryQty }</td>
+                                    <td className={classes} >{receiveQty - issueQty - nextMonthTotalAccessoryQty  } </td>
+                                    <td className={classes} >{(receiveQty - issueQty - nextMonthTotalAccessoryQty) >= 0 ? 0: (- receiveQty + issueQty + nextMonthTotalAccessoryQty) }</td>
+                                    <td className={classes} >{(receiveQty - issueQty - nextMonthTotalAccessoryQty) <= 0 ? 0: (receiveQty - issueQty - nextMonthTotalAccessoryQty) }</td>
                                 </tr>
                             )
                         }
