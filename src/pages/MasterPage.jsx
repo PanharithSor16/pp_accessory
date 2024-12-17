@@ -16,9 +16,10 @@ const MasterPage = () => {
   return (
     <div>
       <div className='m-3 flex place-content-between'>
-        <div className='flex w-1/3 place-content-between items-center '>
+        <div className='flex w-1/2 place-content-between items-center '>
           <Navbar />
-          <div className='flex items-center w-4/5 text-xl' >
+          <h2 className=" ml-2 font-bold text-2xl text-center">Master</h2>
+          <div className='flex items-center w-2/3 text-xl' >
             <label htmlFor="search">Search</label>
             <input type="text" id='search'
               onChange={(e) => setSearch(e.target.value)}

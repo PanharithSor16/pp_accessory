@@ -10,6 +10,7 @@ import MasterPage from './pages/MasterPage'
 import TransferPage from './pages/TransferPage'
 import NextPlanPage from './pages/NextPlanPage'
 import ProtectedRoute from './hooks/ProtectedRoute'
+import SummaryPage from './pages/SummaryPage'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
               <Route path='/transfer' element={<TransferPage />} />
               <Route path='/balance' element={<BalancePage />} />
               <Route path='/next' element={<NextPlanPage />} />
+              <Route path='/summary' element={<SummaryPage/>} />
               <Route path='/user' element={
                 <ProtectedRoute password="Marunix2024">
                   <UserPage />

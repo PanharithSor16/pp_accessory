@@ -5,7 +5,7 @@ import EditTransfer from './transfer/EditTransfer';
 import DeleteTransfer from './transfer/DeleteTransfer';
 import {receive_time} from './nav'
 
-const TransferTable = ({isAdd, search, tableRef}) => {
+const TransferTable = ({startDate, endDate, isAdd, search, tableRef}) => {
     const column_transfer = [
         "Code",
         "Name",
@@ -39,11 +39,12 @@ const TransferTable = ({isAdd, search, tableRef}) => {
     const { authState } = useContext(AuthContext);
     useEffect(() => {
         const response = async () => {
-            const data = await api.get("accessory/get_transfer_user", { params: {search: search} ,  headers: { Authorization: `Bearer ${authState.token}` }})
+            const data = await api.get("accessory/get_transfer_user", { params: {search, startDate, endDate} ,  headers: { Authorization: `Bearer ${authState.token}` }})
             setTransferList(data.data.data)
+            console.log(data.data.data)
         }
         response();
-    }, [isAdd, isEditTransfer, isDeleteTransfer, search])
+    }, [isAdd, startDate, endDate, isEditTransfer, isDeleteTransfer, search])
     return (
         <div>
             <table className="w-full min-w-max table-auto text-left" ref={tableRef}>

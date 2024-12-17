@@ -4,6 +4,7 @@ import list from "../assets/list.png"
 import transfer from "../assets/Transfer.png"
 import allTransfer from "../assets/Transition2.png"
 import next from "../assets/next.png"
+import summary from "../assets/summary.jpg"
 
 export const navbar_data = [
     {
@@ -27,6 +28,11 @@ export const navbar_data = [
         title: "Balance"
     },
     {
+        to: '/summary',
+        image: summary,
+        title: "Summary"
+    },
+    {
         to: '/master',
         image: list,
         title: "Master"
@@ -35,7 +41,7 @@ export const navbar_data = [
         to: '/user',
         image: group, 
         title: "User"
-    }
+    },
 ]
 
 export const receive_time = (date) => {

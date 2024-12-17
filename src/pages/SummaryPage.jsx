@@ -1,17 +1,17 @@
 import React, { useRef, useState } from "react";
-import AllTransferTable from "../components/AllTransferTable";
-import Navbar from "../components/Navbar";
+import SummaryTable from "../components/SummaryTable";
 import { useDownloadExcel } from "react-export-table-to-excel";
+import Navbar from "../components/Navbar";
 
-const AllTransferPage = () => {
+const SummaryPage = () => {
   const [search, setSearch] = useState("");
   const tableRef = useRef(null);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const { onDownload } = useDownloadExcel({
     currentTableRef: tableRef.current,
-    filename: "AllTransferTable",
-    sheet: "Transfer",
+    filename: "SummaryTable",
+    sheet: "Summary",
   });
 
   const handleDownload = () => {
@@ -21,14 +21,13 @@ const AllTransferPage = () => {
       console.warn("Table reference is not set.");
     }
   };
-
   return (
     <div>
       <div className="m-3 flex place-content-between">
         <div className="flex w-2/3 place-content-between items-center">
           <Navbar />
-          <h2 className=" font-bold  text-xl text-center">
-            All Transfer
+          <h2 className=" font-bold text-xl text-center">
+           Summary 
           </h2>
           <div className="flex items-center w-2/5 text-xl">
             <label htmlFor="search">Search</label>
@@ -69,7 +68,7 @@ const AllTransferPage = () => {
           Export
         </button>
       </div>
-      <AllTransferTable
+      <SummaryTable
         search={search}
         startDate={startDate}
         endDate={endDate}
@@ -79,4 +78,4 @@ const AllTransferPage = () => {
   );
 };
 
-export default AllTransferPage;
+export default SummaryPage;

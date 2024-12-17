@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import api from '../api/api';
 import { AuthContext } from '../hooks/AuthContext';
 import {receive_time} from './nav'
-const AllTransferTable = ({ search, tableRef }) => {
-    const columns = ["Code", "Name", "OrderDate", "ReceiveQty", "IssueQty", "TransferBy"];
+const AllTransferTable = ({startDate, endDate, search, tableRef }) => {
+    const columns = ["Code", "Name", "OrderDate", "ReceiveQty", "IssueQty", "TransferBy", "ថ្ងៃបញ្ចូលទិន្ន័យ"];
     const [transferList, setTransferList] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -15,10 +15,11 @@ const AllTransferTable = ({ search, tableRef }) => {
             setError(null);
             try {
                 const response = await api.get("accessory/get_transfer", {
-                    params: { search },
+                    params: { search, startDate, endDate },
                     headers: { Authorization: `Bearer ${authState.token}` },
                 });
                 setTransferList(response.data.data);
+                console.log(response.data.data)
             } catch (err) {
                 setError("Failed to fetch data. Please try again.");
             } finally {
@@ -26,7 +27,7 @@ const AllTransferTable = ({ search, tableRef }) => {
             }
         };
         fetchTransferData();
-    }, [search, authState.token]);
+    }, [search, startDate, endDate, authState.token]);
     return (
         <div>
             {loading && <p>Loading...</p>}
@@ -60,6 +61,7 @@ const AllTransferTable = ({ search, tableRef }) => {
                                     <td className={classes}>{receiveQty}</td>
                                     <td className={classes}>{issueQty}</td>
                                     <td className={classes}>{transferBy}</td>
+                                    <td className={classes}>{receive_time(accessoryTransferDate)}</td>
                                 </tr>
                             );
                         }
