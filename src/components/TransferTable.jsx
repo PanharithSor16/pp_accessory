@@ -41,7 +41,7 @@ const TransferTable = ({startDate, endDate, isAdd, search, tableRef}) => {
         const response = async () => {
             const data = await api.get("accessory/get_transfer_user", { params: {search, startDate, endDate} ,  headers: { Authorization: `Bearer ${authState.token}` }})
             setTransferList(data.data.data)
-            console.log(data.data.data)
+            
         }
         response();
     }, [isAdd, startDate, endDate, isEditTransfer, isDeleteTransfer, search])
